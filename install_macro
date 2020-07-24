@@ -1,0 +1,4 @@
+V=1 VERBOSE=1 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
+install -D -m0644 apps/openssl.cnf %{buildroot}/usr/share/defaults/ssl/openssl.cnf
+rm -rf %{buildroot}/etc/ssl
+rm -rf %{buildroot}/usr/share/doc/openssl/html
