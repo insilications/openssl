@@ -7,8 +7,5 @@ zlib-staticdev
 util-linux-extras
 util-linux-bin
 gcc-dev
-gcc-libgcc
-gcc-libstdc++
 glibc-dev
-glibc-libc
 perl(Test::More)

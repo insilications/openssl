@@ -1,0 +1,11 @@
+# This file contains recursive sources that require this package
+amazon-efs-utils
+ca-certs-static
+clrtrust
+compat-python36
+linux-tools
+pidgin-sipe
+python
+python3
+python37
+ruby
