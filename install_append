@@ -1,3 +1,4 @@
 install -D -m0644 apps/openssl.cnf %{buildroot}/usr/share/defaults/ssl/openssl.cnf
 rm -rf %{buildroot}/etc/ssl
 rm -rf %{buildroot}/usr/share/doc/openssl/html
+rm -rf %{buildroot}/usr/share/man/
