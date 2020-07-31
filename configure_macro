@@ -1,0 +1,1 @@
+./config no-ssl zlib shared no-rc4 no-ssl2 no-ssl3 --prefix=/usr --openssldir=/etc/ssl --libdir=lib64

@@ -1,0 +1,4 @@
+export CFLAGS="$CFLAGS_ORIG -m32 -fno-lto -mstackrealign"
+export LDFLAGS="$LDFLAGS_ORIG -m32 -fno-lto -mstackrealign"
+export CXXFLAGS="$CXXFLAGS_ORIG -m32 -fno-lto -mstackrealign"
+V=1 VERBOSE=1 make  DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install

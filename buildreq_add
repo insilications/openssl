@@ -1,11 +1,17 @@
 #
-# This file contains extra pkgconfig build requirements that don't get picked up but are 
+# This file contains extra pkgconfig build requirements that don't get picked up but are
 # desirable. One name per line, no whitespace.
 #
-zlib-dev
-zlib-staticdev
-util-linux-extras
-util-linux-bin
 gcc-dev
+gcc-dev32
+gcc-libgcc32
+gcc-libstdc++32
 glibc-dev
+glibc-dev32
+glibc-libc32
 perl(Test::More)
+util-linux-bin
+util-linux-extras
+zlib-dev
+zlib-dev32
+zlib-staticdev
