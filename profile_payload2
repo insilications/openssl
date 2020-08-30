@@ -1,0 +1,2 @@
+LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed rsa 
+V=1 VERBOSE=1 make -j16 test || :
