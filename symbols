@@ -1953,6 +1953,9 @@ libcrypto.so.1.1:EVP_rc2_cbc
 libcrypto.so.1.1:EVP_rc2_cfb64
 libcrypto.so.1.1:EVP_rc2_ecb
 libcrypto.so.1.1:EVP_rc2_ofb
+libcrypto.so.1.1:EVP_rc4
+libcrypto.so.1.1:EVP_rc4_40
+libcrypto.so.1.1:EVP_rc4_hmac_md5
 libcrypto.so.1.1:EVP_read_pw_string
 libcrypto.so.1.1:EVP_read_pw_string_min
 libcrypto.so.1.1:EVP_ripemd160
@@ -2749,6 +2752,9 @@ libcrypto.so.1.1:RC2_ecb_encrypt
 libcrypto.so.1.1:RC2_encrypt
 libcrypto.so.1.1:RC2_ofb64_encrypt
 libcrypto.so.1.1:RC2_set_key
+libcrypto.so.1.1:RC4
+libcrypto.so.1.1:RC4_options
+libcrypto.so.1.1:RC4_set_key
 libcrypto.so.1.1:RIPEMD160
 libcrypto.so.1.1:RIPEMD160_Final
 libcrypto.so.1.1:RIPEMD160_Init
@@ -3818,6 +3824,7 @@ libcrypto.so.1.1:a2i_ASN1_STRING
 libcrypto.so.1.1:a2i_GENERAL_NAME
 libcrypto.so.1.1:a2i_IPADDRESS
 libcrypto.so.1.1:a2i_IPADDRESS_NC
+libcrypto.so.1.1:b2i_PVK_bio
 libcrypto.so.1.1:b2i_PrivateKey
 libcrypto.so.1.1:b2i_PrivateKey_bio
 libcrypto.so.1.1:b2i_PublicKey
@@ -4024,6 +4031,7 @@ libcrypto.so.1.1:i2a_ASN1_ENUMERATED
 libcrypto.so.1.1:i2a_ASN1_INTEGER
 libcrypto.so.1.1:i2a_ASN1_OBJECT
 libcrypto.so.1.1:i2a_ASN1_STRING
+libcrypto.so.1.1:i2b_PVK_bio
 libcrypto.so.1.1:i2b_PrivateKey_bio
 libcrypto.so.1.1:i2b_PublicKey_bio
 libcrypto.so.1.1:i2d_ACCESS_DESCRIPTION

@@ -1,4 +1,4 @@
-export CFLAGS="$CFLAGS_ORIG -m64 -flto=16"
-export LDFLAGS="$LDFLAGS_ORIG -m64 -flto=16"
-export CXXFLAGS="$CXXFLAGS_ORIG -m64 -flto=16"
+export CFLAGS="$CFLAGS_ORIG $CFLAGS_USE -m64 -flto=16"
+export LDFLAGS="$LDFLAGS_ORIG $LDFLAGS_USE -m64 -flto=16"
+export CXXFLAGS="$CXXFLAGS_ORIG $CXXFLAGS_USE -m64 -flto=16"
 V=1 VERBOSE=1 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
