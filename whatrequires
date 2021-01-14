@@ -2,7 +2,7 @@
 amazon-efs-utils
 ca-certs-static
 clrtrust
-compat-python36
+compat-python38
 linux-tools
 pidgin-sipe
 python
