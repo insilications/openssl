@@ -164,6 +164,18 @@ Requires: openssl = %{version}-%{release}
 dev components for the openssl package.
 
 
+%package dev32
+Summary: dev32 components for the openssl package.
+Group: Default
+Requires: openssl-lib32 = %{version}-%{release}
+Requires: openssl-bin = %{version}-%{release}
+Requires: openssl-data = %{version}-%{release}
+Requires: openssl-dev = %{version}-%{release}
+
+%description dev32
+dev32 components for the openssl package.
+
+
 %package lib
 Summary: lib components for the openssl package.
 Group: Libraries
@@ -173,6 +185,15 @@ Requires: openssl-data = %{version}-%{release}
 lib components for the openssl package.
 
 
+%package lib32
+Summary: lib32 components for the openssl package.
+Group: Default
+Requires: openssl-data = %{version}-%{release}
+
+%description lib32
+lib32 components for the openssl package.
+
+
 %package staticdev
 Summary: staticdev components for the openssl package.
 Group: Default
@@ -180,6 +201,15 @@ Requires: openssl-dev = %{version}-%{release}
 
 %description staticdev
 staticdev components for the openssl package.
+
+
+%package staticdev32
+Summary: staticdev32 components for the openssl package.
+Group: Default
+Requires: openssl-dev32 = %{version}-%{release}
+
+%description staticdev32
+staticdev32 components for the openssl package.
 
 
 %prep
@@ -198,7 +228,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620024869
+export SOURCE_DATE_EPOCH=1620030377
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -288,24 +318,46 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620024869
+export SOURCE_DATE_EPOCH=1620030377
 rm -rf %{buildroot}
-## install_prepend content
+## install_macro_32 start
+pushd ../build32/
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
+export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
+export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
+export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 export CFLAGS_ORIG="$CFLAGS"
 export LDFLAGS_ORIG="$LDFLAGS"
 export CXXFLAGS_ORIG="$CXXFLAGS"
-## install_prepend end
-## install_macro_32 start
 export CFLAGS="$CFLAGS_ORIG -m32 -fno-lto -mstackrealign"
 export LDFLAGS="$LDFLAGS_ORIG -m32 -fno-lto -mstackrealign"
 export CXXFLAGS="$CXXFLAGS_ORIG -m32 -fno-lto -mstackrealign"
-V=1 VERBOSE=1 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
+make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+    pushd %{buildroot}/usr/lib32/pkgconfig
+    for i in *.pc ; do ln -s $i 32$i ; done
+    popd
+fi
+popd
 ## install_macro_32 end
 ## install_macro start
-export CFLAGS="$CFLAGS_ORIG $CFLAGS_USE -m64 -flto=16"
-export LDFLAGS="$LDFLAGS_ORIG $LDFLAGS_USE -m64 -flto=16"
-export CXXFLAGS="$CXXFLAGS_ORIG $CXXFLAGS_USE -m64 -flto=16"
-V=1 VERBOSE=1 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
+unset PKG_CONFIG_PATH
+export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
+export CFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FCFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export CXXFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export LDFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_USE"
+#
+export AR=/usr/bin/gcc-ar
+export RANLIB=/usr/bin/gcc-ranlib
+export NM=/usr/bin/gcc-nm
+export CFLAGS="$CFLAGS_USE -m64 -flto=16"
+export LDFLAGS="$LDFLAGS_USE -m64 -flto=16"
+export CXXFLAGS="$CXXFLAGS_USE -m64 -flto=16"
+make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
 ## install_macro end
 ## install_append content
 install -D -m0644 apps/openssl.cnf %{buildroot}/usr/share/defaults/ssl/openssl.cnf
@@ -441,12 +493,36 @@ rm -rf %{buildroot}/usr/share/man/
 /usr/lib64/pkgconfig/libssl.pc
 /usr/lib64/pkgconfig/openssl.pc
 
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/engines-1.1/afalg.so
+/usr/lib32/engines-1.1/capi.so
+/usr/lib32/engines-1.1/padlock.so
+/usr/lib32/libcrypto.so
+/usr/lib32/libssl.so
+/usr/lib32/pkgconfig/32libcrypto.pc
+/usr/lib32/pkgconfig/32libssl.pc
+/usr/lib32/pkgconfig/32openssl.pc
+/usr/lib32/pkgconfig/libcrypto.pc
+/usr/lib32/pkgconfig/libssl.pc
+/usr/lib32/pkgconfig/openssl.pc
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libcrypto.so.1.1
 /usr/lib64/libssl.so.1.1
 
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/libcrypto.so.1.1
+/usr/lib32/libssl.so.1.1
+
 %files staticdev
 %defattr(-,root,root,-)
 /usr/lib64/libcrypto.a
 /usr/lib64/libssl.a
+
+%files staticdev32
+%defattr(-,root,root,-)
+/usr/lib32/libcrypto.a
+/usr/lib32/libssl.a

@@ -1,4 +1,20 @@
+pushd ../build32/
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
+export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
+export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
+export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
+export CFLAGS_ORIG="$CFLAGS"
+export LDFLAGS_ORIG="$LDFLAGS"
+export CXXFLAGS_ORIG="$CXXFLAGS"
 export CFLAGS="$CFLAGS_ORIG -m32 -fno-lto -mstackrealign"
 export LDFLAGS="$LDFLAGS_ORIG -m32 -fno-lto -mstackrealign"
 export CXXFLAGS="$CXXFLAGS_ORIG -m32 -fno-lto -mstackrealign"
-V=1 VERBOSE=1 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install
+make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+    pushd %{buildroot}/usr/lib32/pkgconfig
+    for i in *.pc ; do ln -s $i 32$i ; done
+    popd
+fi
+popd
