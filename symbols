@@ -1943,6 +1943,7 @@ libcrypto.so.1.1:EVP_idea_cbc
 libcrypto.so.1.1:EVP_idea_cfb64
 libcrypto.so.1.1:EVP_idea_ecb
 libcrypto.so.1.1:EVP_idea_ofb
+libcrypto.so.1.1:EVP_md2
 libcrypto.so.1.1:EVP_md4
 libcrypto.so.1.1:EVP_md5
 libcrypto.so.1.1:EVP_md5_sha1
@@ -1957,6 +1958,10 @@ libcrypto.so.1.1:EVP_rc2_ofb
 libcrypto.so.1.1:EVP_rc4
 libcrypto.so.1.1:EVP_rc4_40
 libcrypto.so.1.1:EVP_rc4_hmac_md5
+libcrypto.so.1.1:EVP_rc5_32_12_16_cbc
+libcrypto.so.1.1:EVP_rc5_32_12_16_cfb64
+libcrypto.so.1.1:EVP_rc5_32_12_16_ecb
+libcrypto.so.1.1:EVP_rc5_32_12_16_ofb
 libcrypto.so.1.1:EVP_read_pw_string
 libcrypto.so.1.1:EVP_read_pw_string_min
 libcrypto.so.1.1:EVP_ripemd160
@@ -2032,6 +2037,11 @@ libcrypto.so.1.1:IPAddressRange_free
 libcrypto.so.1.1:IPAddressRange_new
 libcrypto.so.1.1:ISSUING_DIST_POINT_free
 libcrypto.so.1.1:ISSUING_DIST_POINT_new
+libcrypto.so.1.1:MD2
+libcrypto.so.1.1:MD2_Final
+libcrypto.so.1.1:MD2_Init
+libcrypto.so.1.1:MD2_Update
+libcrypto.so.1.1:MD2_options
 libcrypto.so.1.1:MD4
 libcrypto.so.1.1:MD4_Final
 libcrypto.so.1.1:MD4_Init
@@ -2757,6 +2767,13 @@ libcrypto.so.1.1:RC2_set_key
 libcrypto.so.1.1:RC4
 libcrypto.so.1.1:RC4_options
 libcrypto.so.1.1:RC4_set_key
+libcrypto.so.1.1:RC5_32_cbc_encrypt
+libcrypto.so.1.1:RC5_32_cfb64_encrypt
+libcrypto.so.1.1:RC5_32_decrypt
+libcrypto.so.1.1:RC5_32_ecb_encrypt
+libcrypto.so.1.1:RC5_32_encrypt
+libcrypto.so.1.1:RC5_32_ofb64_encrypt
+libcrypto.so.1.1:RC5_32_set_key
 libcrypto.so.1.1:RIPEMD160
 libcrypto.so.1.1:RIPEMD160_Final
 libcrypto.so.1.1:RIPEMD160_Init

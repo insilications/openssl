@@ -1,3 +1,4 @@
+pushd ../build-special/
 unset PKG_CONFIG_PATH
 export CFLAGS="${CFLAGS_USE}"
 export CXXFLAGS="${CXXFLAGS_USE}"
@@ -5,3 +6,4 @@ export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 make DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+popd
