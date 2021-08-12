@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : openssl
 Version  : 1.1.1k
-Release  : 103
+Release  : 104
 URL      : https://www.openssl.org/source/openssl-1.1.1k.tar.gz
 Source0  : https://www.openssl.org/source/openssl-1.1.1k.tar.gz
 Summary  : unknown
@@ -231,7 +231,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1628426667
+export SOURCE_DATE_EPOCH=1628737361
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -322,12 +322,12 @@ export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
 ./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2
 ## make_prepend content
-make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive"
+make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 ## make_prepend end
-make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive" V=1 VERBOSE=1
+make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" V=1 VERBOSE=1
 
 LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed rsa
-make -j16 test VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive"
+make -j16 test VERBOSE=1 V=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 make clean || :
 echo USED > statuspgo
 fi
@@ -340,9 +340,9 @@ export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 ./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2
 ## make_prepend content
-make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive"
+make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 ## make_prepend end
-make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive" V=1 VERBOSE=1
+make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" V=1 VERBOSE=1
 fi
 
 pushd ../build-special/
@@ -436,12 +436,12 @@ export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
 ./config zlib shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2
 ## make_prepend content
-make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive"
+make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 ## make_prepend end
-make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
+make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" V=1 VERBOSE=1
 
 LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed rsa
-make -j16 test VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive"
+make -j16 test VERBOSE=1 V=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 make clean || :
 echo USED > statuspgo
 fi
@@ -454,9 +454,9 @@ export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 ./config zlib shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2
 ## make_prepend content
-make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive -Wl,--no-whole-archive"
+make %{?_smp_mflags} depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 ## make_prepend end
-make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
+make  %{?_smp_mflags}  V=1 VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" V=1 VERBOSE=1
 fi
 popd
 pushd ../build32/
@@ -465,23 +465,28 @@ export RANLIB=gcc-ranlib
 export NM=gcc-nm
 unset LD_LIBRARY_PATH
 unset LIBRARY_PATH
+unset CPATH
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+unset ASFLAGS
+unset CFLAGS
+unset CXXFLAGS
 unset FCFLAGS
 unset FFLAGS
 unset CFFLAGS
-export CFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
-export CXXFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
-export LDFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -m32 -mstackrealign -march=native -mtune=native"
+unset LDFLAGS
 export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
-export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
-export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
-export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
+export CFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
+export CXXFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
+export FCFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
+export FFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
+export CFFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -fvisibility-inlines-hidden -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
+export LDFLAGS="-O2 -ffat-lto-objects -fuse-linker-plugin -pipe -fPIC -march=native -mtune=native -m32 -mstackrealign"
 i386 ./config no-ssl zlib shared no-rc4 no-ssl2 no-ssl3 no-asm --prefix=/usr --openssldir=/etc/ssl --libdir=lib32
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1628426667
+export SOURCE_DATE_EPOCH=1628737361
 rm -rf %{buildroot}
 ## install_macro_32 start
 pushd ../build32/
@@ -541,7 +546,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" install V=1 VERBOSE=1
 popd
 ## install_macro_build_special end
 ## install_macro start
@@ -574,7 +579,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" install V=1 VERBOSE=1
 ## install_macro end
 ## install_append content
 install -D -m0644 apps/openssl.cnf %{buildroot}/usr/share/defaults/ssl/openssl.cnf

@@ -1,2 +1,2 @@
 LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed rsa 
-make -j16 test VERBOSE=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive /usr/lib64/libz.a -Wl,--no-whole-archive"
+LD_PRELOAD="./libcrypto.so ./libssl.so" make -j16 test VERBOSE=1 V=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"

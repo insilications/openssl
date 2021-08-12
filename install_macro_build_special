@@ -28,5 +28,5 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl install V=1 VERBOSE=1
+make -j16 DESTDIR=%{buildroot} MANDIR=/usr/share/man MANSUFFIX=openssl LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive" install V=1 VERBOSE=1
 popd

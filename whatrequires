@@ -2055,6 +2055,7 @@ compat-mlt-soname6
 compat-mlt-soname6-dev
 compat-mlt-soname6-lib
 compat-nettle-soname7
+compat-openssl-soname-110
 compat-pangomm-soname14-dev
 compat-poppler-soname111
 compat-poppler-soname111-lib
@@ -4070,6 +4071,7 @@ libblockdev-dev
 libblockdev-lib
 libblockdev-python
 libblockdev-python3
+libblockdev-staticdev
 libbluray-dev
 libbluray-staticdev
 libbytesize
@@ -6226,6 +6228,7 @@ rt-tests-python3
 rtkit
 rtkit-bin
 rtkit-libexec
+rtkit-tests
 rtmpdump
 rtmpdump-bin
 rtmpdump-dev
@@ -6812,6 +6815,7 @@ udisks2-bin
 udisks2-dev
 udisks2-lib
 udisks2-libexec
+udisks2-staticdev
 uget
 uget-bin
 uhttpmock-dev
