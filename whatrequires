@@ -820,6 +820,8 @@ R-lmom
 R-lmom-lib
 R-lmtest
 R-lmtest-lib
+R-lobstr
+R-lobstr-lib
 R-locfit
 R-locfit-lib
 R-logcondens
@@ -939,6 +941,7 @@ R-party
 R-party-lib
 R-partykit
 R-partykit-lib
+R-patchwork
 R-pbdZMQ
 R-pbdZMQ-lib
 R-pbivnorm
@@ -1310,6 +1313,8 @@ R-vcr
 R-vcr-lib
 R-vctrs
 R-vctrs-lib
+R-vdiffr
+R-vdiffr-lib
 R-vegan
 R-vegan-lib
 R-vembedr
@@ -2454,6 +2459,9 @@ farstream-lib
 fasteners
 fasteners-python
 fasteners-python3
+fastnumbers
+fastnumbers-python
+fastnumbers-python3
 feh
 feh-bin
 fetchmail
@@ -2518,7 +2526,6 @@ folks-lib
 fontconfig-dev
 fontconfig-dev32
 fontconfig-staticdev
-fontconfig-staticdev32
 fontforge
 fontforge-bin
 fontforge-dev
@@ -2538,7 +2545,6 @@ freedv-bin
 freetype-dev
 freetype-dev32
 freetype-staticdev
-freetype-staticdev32
 freezegun
 freezegun-python
 freezegun-python3
@@ -2637,7 +2643,10 @@ geocode-glib-dev
 gevent
 gevent-python
 gevent-python3
+gexiv2
 gexiv2-dev
+gexiv2-python
+gexiv2-python3
 gfbgraph
 gfbgraph-dev
 gfbgraph-lib
@@ -3193,6 +3202,9 @@ imapfilter-bin
 importlib_metadata
 importlib_metadata-python
 importlib_metadata-python3
+importlib_resources
+importlib_resources-python
+importlib_resources-python3
 influxdb
 influxdb-python
 influxdb-python3
@@ -4748,6 +4760,10 @@ mypy_extensions-python
 mypy_extensions-python3
 nagios-plugins
 nagios-plugins-libexec
+natsort
+natsort-bin
+natsort-python
+natsort-python3
 nautilus
 nautilus-bin
 nautilus-dev
