@@ -22,9 +22,9 @@ export LIBVA_DRIVERS_PATH=/usr/lib64/dri
 export GTK_RC_FILES=/etc/gtk/gtkrc
 export FONTCONFIG_PATH=/usr/share/defaults/fonts
 if [[ "$(basename $(readlink -f .))" == "build-special" ]]; then
-    LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed
+    LD_PRELOAD="./libcrypto.so ./libssl.so" apps/openssl speed -seconds 3
     LD_PRELOAD="./libcrypto.so ./libssl.so" make -j16 test TESTS='alltests' VERBOSE=1 V=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 else
-    apps/openssl speed
+    apps/openssl speed -seconds 3
     make -j16 test TESTS='alltests' VERBOSE=1 V=1 LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
 fi
