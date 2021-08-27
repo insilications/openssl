@@ -1,1 +1,2 @@
+sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
 make -j16 depend LDFLAGS="${LDFLAGS} -Wl,--whole-archive,/usr/lib64/libz.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive"
