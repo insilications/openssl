@@ -28,8 +28,8 @@ gcc-dev
 gcc-dev32
 gcc-doc
 gcc-libgcc32
-gcc-libs-math
 gcc-libstdc++32
+gcc-libs-math
 gcc-libubsan
 gcc-locale
 gdb
@@ -41,8 +41,8 @@ glibc-dev
 glibc-dev32
 glibc-doc
 glibc-extras
-glibc-lib-avx2
 glibc-libc32
+glibc-lib-avx2
 glibc-locale
 glibc-nscd
 glibc-staticdev
@@ -89,9 +89,9 @@ xz
 xz-dev
 xz-staticdev
 zip
-zlib
 zlib-dev
 zlib-dev32
 zlib-staticdev
+zlib-staticdev32
 zstd-dev
 zstd-staticdev

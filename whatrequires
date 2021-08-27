@@ -557,6 +557,7 @@ R-distr
 R-distr-lib
 R-distrEx
 R-distrEx-lib
+R-distributional
 R-dlm
 R-dlm-lib
 R-doMPI
@@ -985,6 +986,7 @@ R-polyCub-lib
 R-polyclip
 R-polyclip-lib
 R-polycor
+R-posterior
 R-prabclus
 R-prefmod
 R-prefmod-lib
@@ -2963,6 +2965,9 @@ gspell
 gspell-bin
 gspell-dev
 gspell-lib
+gssapi
+gssapi-python
+gssapi-python3
 gst-plugins-bad
 gst-plugins-bad-bin
 gst-plugins-bad-dev
@@ -4140,6 +4145,7 @@ libevent
 libevent-dev
 libevent-dev32
 libevent-lib
+libevent-staticdev
 libfm
 libfm-bin
 libfm-dev
@@ -4474,6 +4480,7 @@ linecache2-python3
 links
 links-bin
 linux
+linux-applications
 linux-aws
 linux-aws-dev
 linux-current
@@ -4852,10 +4859,12 @@ nftables-dev
 nftables-python
 nftables-python3
 nghttp2
+nghttp2-bin
 nghttp2-dev
 nghttp2-dev32
 nghttp2-python
 nghttp2-python3
+nghttp2-staticdev
 nginx
 nginx-bin
 nginx-mainline
@@ -6143,6 +6152,9 @@ requests
 requests-file
 requests-file-python
 requests-file-python3
+requests-gssapi
+requests-gssapi-python
+requests-gssapi-python3
 requests-kerberos
 requests-kerberos-python
 requests-kerberos-python3
@@ -6212,6 +6224,9 @@ rpcbind-bin
 rpm
 rpm-bin
 rpm-dev
+rpm-py-installer
+rpm-py-installer-python
+rpm-py-installer-python3
 rpm-python
 rpm-python3
 rpmfile
@@ -6487,6 +6502,7 @@ spice-gtk
 spice-gtk-bin
 spice-gtk-dev
 spice-gtk-lib
+spice-gtk-libexec
 spice-lib
 spyder-ide
 spyder-ide-bin
@@ -6898,6 +6914,9 @@ v4l-utils-dev32
 v4l-utils-extras-qt
 v4l-utils-lib
 vala-dev
+validators
+validators-python
+validators-python3
 vim
 vim-bin
 vim-data
