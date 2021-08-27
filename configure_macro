@@ -1,1 +1,1 @@
-./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 tests enable-unit-test
+./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 enable-unit-test

@@ -1,1 +1,1 @@
-i386 ./config no-ssl zlib shared no-rc4 no-ssl2 no-ssl3 no-asm --prefix=/usr --openssldir=/etc/ssl --libdir=lib32
+i386 ./config no-ssl zlib shared no-rc4 no-ssl2 no-ssl3 no-asm --prefix=/usr --openssldir=/etc/ssl --libdir=lib32 no-tests
