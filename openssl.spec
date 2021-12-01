@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : openssl
 Version  : 1.1.1l
-Release  : 109
+Release  : 110
 URL      : https://www.openssl.org/source/openssl-1.1.1l.tar.gz
 Source0  : https://www.openssl.org/source/openssl-1.1.1l.tar.gz
 Summary  : unknown
@@ -143,7 +143,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638346862
+export SOURCE_DATE_EPOCH=1638347012
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -238,7 +238,6 @@ export LIBS="${LIBS_GENERATE}"
 ./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 enable-unit-test
 ## make_prepend64 content
 sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
-exit 1
 make -j16 depend V=1 VERBOSE=1
 ## make_prepend64 end
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
@@ -295,7 +294,6 @@ export LIBS="${LIBS_USE}"
 ./config zlib no-shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 no-tests
 ## make_prepend64 content
 sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
-exit 1
 make -j16 depend V=1 VERBOSE=1
 ## make_prepend64 end
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
@@ -396,7 +394,6 @@ export LIBS="${LIBS_GENERATE}"
 ./config zlib shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 enable-unit-test
 ## make_prepend64 content
 sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
-exit 1
 make -j16 depend V=1 VERBOSE=1
 ## make_prepend64 end
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
@@ -453,7 +450,6 @@ export LIBS="${LIBS_USE}"
 ./config zlib shared --prefix=/usr --openssldir=/etc/ssl --libdir=lib64 --with-rand-seed=rdcpu enable-rc5 enable-md2 no-tests
 ## make_prepend64 content
 sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
-exit 1
 make -j16 depend V=1 VERBOSE=1
 ## make_prepend64 end
 make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
@@ -489,7 +485,7 @@ make  %{?_smp_mflags}  V=1 VERBOSE=1  V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1638346862
+export SOURCE_DATE_EPOCH=1638347012
 rm -rf %{buildroot}
 ## install_macro_32 start
 pushd ../build32/
