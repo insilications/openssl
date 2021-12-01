@@ -1,7 +1,7 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From b082ab16f8cc2478fec781feb5957b36dbec33dc Mon Sep 17 00:00:00 2001
 From: Auke Kok <auke-jan.h.kok@intel.com>
 Date: Sat, 3 Nov 2018 20:00:42 -0700
-Subject: [PATCH] Use OS provided copy of openssl.cnf as fallback.
+Subject: [PATCH 2/3] Use OS provided copy of openssl.cnf as fallback.
 
 This will be used only if OPENSSL_CONF is not set and if
 /etc/openssl.cnf is not found. If either one of those is the case, they
@@ -91,3 +91,6 @@ index 6e7291a..a8690a6 100644
  #  define X509_PRIVATE_DIR        OPENSSLDIR "/private"
  #  define CTLOG_FILE              OPENSSLDIR "/ct_log_list.cnf"
  # else
+-- 
+2.34.0
+

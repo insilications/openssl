@@ -1,3 +1,3 @@
-0001-Use-clearlinux-CFLAGS-during-build.patch
-0002-Hide-a-symbol-from-Steam.patch
-0003-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch 
+0001-Hide-a-symbol-from-Steam.patch
+0002-Use-OS-provided-copy-of-openssl.cnf-as-fallback.patch
+0003-Use-clearlinux-CFLAGS-during-build.patch
