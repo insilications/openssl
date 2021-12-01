@@ -1,3 +1,2 @@
 sd "install: install_sw install_ssldirs install_docs" "install: install_sw install_ssldirs" Makefile
-exit 1
 make -j16 depend V=1 VERBOSE=1
