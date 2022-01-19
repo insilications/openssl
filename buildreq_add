@@ -92,6 +92,5 @@ zip
 zlib-dev
 zlib-dev32
 zlib-staticdev
-zlib-staticdev32
 zstd-dev
 zstd-staticdev
